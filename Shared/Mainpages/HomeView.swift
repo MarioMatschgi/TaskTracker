@@ -26,6 +26,15 @@ struct HomeView: View {
                     Image(systemName: task.isTracking ? "stop.circle" : "play.fill")
                 }.tag(task)
             }
+        }.onAppear {
+            if let uid = userDefaults.string(forKey: KEYS.HOME_TASKS_SELECTED) {
+                selected = model.tasks.first(where: { task in
+                    task.id == UUID(uuidString: uid)
+                })
+            }
+        }
+        .onDisappear {
+            userDefaults.set(selected?.id?.uuidString, forKey: KEYS.HOME_TASKS_SELECTED)
         }
         .navigationTitle(selected?.name ?? "")
     }

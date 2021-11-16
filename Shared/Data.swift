@@ -8,6 +8,10 @@
 import Foundation
 import SwiftUI
 
+class KEYS {
+    static let HOME_TASKS_SELECTED = "home.tasks.selected"
+}
+
 enum PageType {
     case home
     case track

@@ -10,6 +10,8 @@ import SwiftUI
 import CoreData
 import WidgetKit
 
+let userDefaults = UserDefaults.standard
+
 extension NSManagedObjectContext {
     func safeSave() {
         do {
