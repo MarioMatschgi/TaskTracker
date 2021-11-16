@@ -36,12 +36,15 @@ struct HomeView: View {
         .onDisappear {
             userDefaults.set(selected?.id?.uuidString, forKey: KEYS.HOME_TASKS_SELECTED)
         }
-        .navigationTitle(selected?.name ?? "")
-    }
-}
-
-struct HomeView_Previews: PreviewProvider {
-    static var previews: some View {
-        HomeView()
+        .navigationTitle(selected?.name ?? "Home")
+        .toolbar {
+            ToolbarItem {
+                Button {
+                    print("View")
+                } label: {
+                    Label("View task", systemImage: "info.circle")
+                }
+            }
+        }
     }
 }

@@ -36,17 +36,6 @@ struct ContentView: View {
         }
     }
 
-    private func addItem() {
-        withAnimation {
-            let newItem = Task(context: viewContext)
-            newItem.id = UUID()
-            newItem.name = "New Task"
-            newItem.entries = []
-
-            viewContext.safeSave()
-        }
-    }
-
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
             offsets.map { model.tasks[$0] }.forEach(viewContext.delete)

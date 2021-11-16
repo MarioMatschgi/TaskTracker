@@ -13,9 +13,6 @@ struct TaskTrackerApp: App {
     @StateObject var model: Model
 
     init() {
-//        let manager = PersistenceManager()
-//        self.persistenceManager = manager
-
         let managedObjectContext = persistenceController.container.viewContext
         let storage = Model(managedObjectContext: managedObjectContext)
         self._model = StateObject(wrappedValue: storage)
@@ -26,6 +23,8 @@ struct TaskTrackerApp: App {
             ContentView()
                 .environmentObject(model)
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
+        }.commands {
+            SidebarCommands()
         }
     }
 }
