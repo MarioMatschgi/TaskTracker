@@ -14,44 +14,57 @@ enum PageType {
     case history
 }
 
-class Model: NSObject, ObservableObject {
-    // Thanks to https://www.donnywals.com/fetching-objects-from-core-data-in-a-swiftui-project/
-    @Published var tasks: [Task] = []
-    
-    private let controller: NSFetchedResultsController<Task>
-
-      init(managedObjectContext: NSManagedObjectContext) {
-          controller = NSFetchedResultsController(fetchRequest: Task.taskFetchRequest,
-        managedObjectContext: managedObjectContext,
-        sectionNameKeyPath: nil, cacheName: nil)
-
-        super.init()
-
-        controller.delegate = self
-
-        do {
-          try controller.performFetch()
-            tasks = controller.fetchedObjects ?? []
-        } catch {
-          print("failed to fetch items!")
-        }
-      }
-}
-
 extension Task {
-    static var taskFetchRequest: NSFetchRequest<Task> {
-        let request = Task.fetchRequest()
-        request.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
-        
-        return request
+    var entriesArr: [TaskEntry] {
+        return (self.entries! as! Set<TaskEntry>).sorted(by: { e1, e2 in
+            e1.start! > e2.start!
+        })
     }
 }
 
-extension Model: NSFetchedResultsControllerDelegate {
-  func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-    guard let tasks = controller.fetchedObjects as? [Task]
-      else { return }
+extension TaskEntry {
+    func toString() -> String {
+        var str = "\(start!.formatted(date: .omitted, time: .standard))-"
+        if end == nil {
+            str += "now"
+        } else {
+            str += end!.formatted(date: .omitted, time: .standard)
+        }
+        return str
+    }
+}
 
-      self.tasks = tasks
-  }
+extension TimeInterval {
+    var diffString: String {
+        var str = ""
+        if day > 0 {
+            str += " \(day)d"
+        }
+        if hour > 0 {
+            str += " \(hour)h"
+        }
+        if minute > 0 {
+            str += " \(minute)m"
+        }
+        if second > 0 {
+            str += " \(second)s"
+        }
+        
+        return str.trimmingCharacters(in: .whitespaces)
+    }
+    var day: Int {
+        Int((self/86400).truncatingRemainder(dividingBy: 86400))
+    }
+    var hour: Int {
+        Int((self/3600).truncatingRemainder(dividingBy: 3600))
+    }
+    var minute: Int {
+        Int((self/60).truncatingRemainder(dividingBy: 60))
+    }
+    var second: Int {
+        Int(truncatingRemainder(dividingBy: 60))
+    }
+    var millisecond: Int {
+        Int((self*1000).truncatingRemainder(dividingBy: 1000))
+    }
 }

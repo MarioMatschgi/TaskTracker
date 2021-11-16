@@ -9,8 +9,8 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
-    @Environment(\.managedObjectContext) private var viewContext
     @EnvironmentObject var model: Model
+    @Environment(\.managedObjectContext) private var viewContext
     
     @State var page: PageType? = .home
 
