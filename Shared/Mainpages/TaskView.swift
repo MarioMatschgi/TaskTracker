@@ -19,7 +19,9 @@ struct TaskView: View {
         NavigationView {
             List(model.tasks, id: \.id) { task in
                 NavigationLink(task.name ?? "", tag: task, selection: $selected) {
-                    Text("aa")
+                    if selected != nil {
+                        TaskDetailView(task: selected!)
+                    }
                 }.contextMenu {
                     Button {
                         print("rename")
@@ -78,11 +80,5 @@ struct TaskView: View {
                 viewContext.safeSave()
             }
         }
-    }
-}
-
-struct TrackView_Previews: PreviewProvider {
-    static var previews: some View {
-        TaskView()
     }
 }

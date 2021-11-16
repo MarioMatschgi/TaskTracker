@@ -28,13 +28,17 @@ extension Task {
 
 extension TaskEntry {
     func toString() -> String {
-        var str = "\(start!.formatted(date: .omitted, time: .standard))-"
+        return "\(toStringStart())-\(toStringEnd())"
+    }
+    func toStringStart() -> String {
+        return start!.formatted(date: .omitted, time: .standard)
+    }
+    func toStringEnd() -> String {
         if end == nil {
-            str += "now"
+            return "now"
         } else {
-            str += end!.formatted(date: .omitted, time: .standard)
+            return end!.formatted(date: .omitted, time: .standard)
         }
-        return str
     }
 }
 

@@ -26,7 +26,7 @@ struct TrackTaskView: View {
                     Text(task?.name ?? "")
                     Text(getFullDuration())
                     if task!.entriesArr.count > 0 {
-                        Text(getTimeTillNow(task!.entriesArr[0].start!, task!.entriesArr[0].end))
+                        Text(DateTimeUtil.getTimeDiffFormatted(task!.entriesArr[0].start!, task!.entriesArr[0].end))
                     }
                 }.frame(maxWidth: .infinity, alignment: .leading)
                 
@@ -103,10 +103,5 @@ struct TrackTaskView: View {
             diff += entry.start!.distance(to: entry.end ?? Date())
         }
         return diff.diffString
-    }
-    
-    func getTimeTillNow(_ date: Date, _ till: Date? = nil) -> String {
-        let timeDiff = date.distance(to: till ?? Date())
-        return timeDiff.diffString
     }
 }
