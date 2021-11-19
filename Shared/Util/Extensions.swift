@@ -71,3 +71,16 @@ extension String {
         return NSLocalizedString(self, tableName: "lang", bundle: .main, value: self, comment: self)
     }
 }
+
+enum CRUDMode {
+    case create
+    case read
+    case update
+    case delete
+}
+
+extension Date {
+    func withoutSeconds() -> Date {
+        return self.addingTimeInterval(-1 * TimeInterval(Double(self.timeIntervalSince1970.millisecond) / Double(1000)))
+    }
+}

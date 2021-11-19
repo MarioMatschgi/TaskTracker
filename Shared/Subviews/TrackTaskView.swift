@@ -76,19 +76,15 @@ struct TrackTaskView: View {
         withAnimation {
             if task!.isTracking {
                 if task!.entriesArr.count > 0 {
-                    task?.entriesArr[0].end = Date()
+                    task?.entriesArr[0].end = Date().withoutSeconds()
                 }
                 stopTimer()
             } else {
                 let new = TaskEntry(context: viewContext)
-                new.start = Date().addingTimeInterval(-1 * TimeInterval(Double(Date().timeIntervalSince1970.millisecond) / Double(1000)))
+                new.start = Date().withoutSeconds()
                 new.task = task!
                 startTimer()
             }
-            
-//            for e in Array(task!.entries! as! Set<TaskEntry>) {
-//                viewContext.delete(e)
-//            }
             
             task!.isTracking = !task!.isTracking
             

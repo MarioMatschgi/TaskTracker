@@ -37,8 +37,18 @@ struct TaskView: View {
             }
             
             Text("Choose a task")
+        }.onAppear {
+            if let uid = userDefaults.string(forKey: KEYS.TASKS_SELECTED) {
+                selected = model.tasks.first(where: { task in
+                    task.id == UUID(uuidString: uid)
+                })
+            }
+        }
+        .onDisappear {
+            userDefaults.set(selected?.id?.uuidString, forKey: KEYS.TASKS_SELECTED)
         }
         .navigationTitle(selected?.name ?? "Tasks")
+        .navigationSubtitle(selected != nil ? "Tasks" : "")
         .toolbar {
             ToolbarItem {
                 Button {

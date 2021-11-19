@@ -10,6 +10,7 @@ import SwiftUI
 
 class KEYS {
     static let HOME_TASKS_SELECTED = "home.tasks.selected"
+    static let TASKS_SELECTED = "tasks.selected"
 }
 
 enum PageType {
@@ -31,13 +32,13 @@ extension TaskEntry {
         return "\(toStringStart())-\(toStringEnd())"
     }
     func toStringStart() -> String {
-        return start!.formatted(date: .omitted, time: .standard)
+        return start!.formatted(date: .omitted, time: .shortened)
     }
     func toStringEnd() -> String {
         if end == nil {
             return "now"
         } else {
-            return end!.formatted(date: .omitted, time: .standard)
+            return end!.formatted(date: .omitted, time: .shortened)
         }
     }
 }

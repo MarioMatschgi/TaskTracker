@@ -21,9 +21,9 @@ struct HomeView: View {
             }.frame(height: 100)
             List(model.tasks, id: \.id, selection: $selected) { task in
                 HStack {
+                    Image(systemName: task.isTracking ? "stop.circle" : "play.fill")
                     Text(task.name!)
                     Spacer()
-                    Image(systemName: task.isTracking ? "stop.circle" : "play.fill")
                 }.tag(task)
             }
         }.onAppear {
@@ -37,10 +37,11 @@ struct HomeView: View {
             userDefaults.set(selected?.id?.uuidString, forKey: KEYS.HOME_TASKS_SELECTED)
         }
         .navigationTitle(selected?.name ?? "Home")
+        .navigationSubtitle(selected != nil ? "Home" : "")
         .toolbar {
             ToolbarItem {
                 Button {
-                    print("View")
+                    print("View - deeplink to task")
                 } label: {
                     Label("View task", systemImage: "info.circle")
                 }
