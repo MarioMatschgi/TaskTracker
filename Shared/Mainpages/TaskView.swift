@@ -16,7 +16,6 @@ struct TaskView: View {
     @State var selected: Task? = nil
     
     var body: some View {
-//        Text("Add new tasks to track, remove existing ones, etc.")
         NavigationView {
             List(model.tasks, id: \.id) { task in
                 NavigationLink(task.name ?? "", tag: task, selection: $selected) {

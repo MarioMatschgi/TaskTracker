@@ -13,7 +13,7 @@ struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
     
     @State var page: PageType? = .home
-
+    
     var body: some View {
         NavigationView {
             List {
@@ -28,11 +28,25 @@ struct ContentView: View {
                     Label("Tasks", systemImage: "square.and.pencil")
                 }
                 NavigationLink(tag: .history, selection: $page) {
-                    HistoryView()
+                    AccountingView()
                 } label: {
-                    Label("History", systemImage: "clock.arrow.circlepath")
+                    Label("Accounting", systemImage: "newspaper")
                 }
             }.listStyle(SidebarListStyle())
+        }.onAppear {
+            DispatchQueue.main.async {
+                if let p = userDefaults.string(forKey: KEYS.MAIN_PAGE_SELECTED) {
+                    page = PageType(rawValue: p)
+                }
+            }
+        }
+        .onChange(of: page, perform: { newValue in
+            userDefaults.set(newValue?.rawValue, forKey: KEYS.MAIN_PAGE_SELECTED)
+        })
+        .toolbar {
+            ToolbarItem {
+                Button { } label: { }.hidden()
+            }
         }
     }
 }

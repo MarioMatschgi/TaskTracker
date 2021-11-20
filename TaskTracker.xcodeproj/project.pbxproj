@@ -25,8 +25,8 @@
 		ACF3D2252743CDB20003C4C5 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF3D2232743CDB20003C4C5 /* HomeView.swift */; };
 		ACF3D2272743CDD20003C4C5 /* TaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF3D2262743CDD20003C4C5 /* TaskView.swift */; };
 		ACF3D2282743CDD20003C4C5 /* TaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF3D2262743CDD20003C4C5 /* TaskView.swift */; };
-		ACF3D22A2743CDEC0003C4C5 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF3D2292743CDEC0003C4C5 /* HistoryView.swift */; };
-		ACF3D22B2743CDEC0003C4C5 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF3D2292743CDEC0003C4C5 /* HistoryView.swift */; };
+		ACF3D22A2743CDEC0003C4C5 /* AccountingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF3D2292743CDEC0003C4C5 /* AccountingView.swift */; };
+		ACF3D22B2743CDEC0003C4C5 /* AccountingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF3D2292743CDEC0003C4C5 /* AccountingView.swift */; };
 		ACF3D22F2743D3D00003C4C5 /* TaskTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = ACF3D22C2743D3CF0003C4C5 /* TaskTracker.xcdatamodeld */; };
 		ACF3D2302743D3D00003C4C5 /* TaskTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = ACF3D22C2743D3CF0003C4C5 /* TaskTracker.xcdatamodeld */; };
 		ACF3D2322743D8FA0003C4C5 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF3D2312743D8FA0003C4C5 /* Extensions.swift */; };
@@ -48,7 +48,7 @@
 		ACF3D2202743CD1D0003C4C5 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		ACF3D2232743CDB20003C4C5 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		ACF3D2262743CDD20003C4C5 /* TaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskView.swift; sourceTree = "<group>"; };
-		ACF3D2292743CDEC0003C4C5 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		ACF3D2292743CDEC0003C4C5 /* AccountingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountingView.swift; sourceTree = "<group>"; };
 		ACF3D22D2743D3CF0003C4C5 /* TaskTracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TaskTracker.xcdatamodel; sourceTree = "<group>"; };
 		ACF3D22E2743D3CF0003C4C5 /* Shared.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Shared.xcdatamodel; sourceTree = "<group>"; };
 		ACF3D2312743D8FA0003C4C5 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -129,7 +129,7 @@
 			children = (
 				ACF3D2232743CDB20003C4C5 /* HomeView.swift */,
 				ACF3D2262743CDD20003C4C5 /* TaskView.swift */,
-				ACF3D2292743CDEC0003C4C5 /* HistoryView.swift */,
+				ACF3D2292743CDEC0003C4C5 /* AccountingView.swift */,
 			);
 			path = Mainpages;
 			sourceTree = "<group>";
@@ -242,7 +242,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACA2766A27444C90002C54B8 /* DateTimeUtil.swift in Sources */,
-				ACF3D22A2743CDEC0003C4C5 /* HistoryView.swift in Sources */,
+				ACF3D22A2743CDEC0003C4C5 /* AccountingView.swift in Sources */,
 				ACF3D2372743F0170003C4C5 /* TrackTaskView.swift in Sources */,
 				ACF3D2212743CD1D0003C4C5 /* Data.swift in Sources */,
 				ACA27666274446DC002C54B8 /* TaskDetailView.swift in Sources */,
@@ -261,7 +261,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACA2766B27444C90002C54B8 /* DateTimeUtil.swift in Sources */,
-				ACF3D22B2743CDEC0003C4C5 /* HistoryView.swift in Sources */,
+				ACF3D22B2743CDEC0003C4C5 /* AccountingView.swift in Sources */,
 				ACF3D2382743F0170003C4C5 /* TrackTaskView.swift in Sources */,
 				ACF3D2222743CD1D0003C4C5 /* Data.swift in Sources */,
 				ACA27667274446DC002C54B8 /* TaskDetailView.swift in Sources */,

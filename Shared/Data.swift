@@ -9,11 +9,12 @@ import Foundation
 import SwiftUI
 
 class KEYS {
+    static let MAIN_PAGE_SELECTED = "main.page.selected"
     static let HOME_TASKS_SELECTED = "home.tasks.selected"
     static let TASKS_SELECTED = "tasks.selected"
 }
 
-enum PageType {
+enum PageType: String {
     case home
     case track
     case history
