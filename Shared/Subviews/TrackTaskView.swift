@@ -24,9 +24,11 @@ struct TrackTaskView: View {
             HStack {
                 VStack(alignment: .leading) {
                     Text(task?.name ?? "")
-                    Text(getFullDuration())
+                    Text("Total: " + (task?.getFullDuration() ?? "0s"))
                     if task!.entriesArr.count > 0 {
-                        Text(DateTimeUtil.getTimeDiffFormatted(task!.entriesArr[0].start!, task!.entriesArr[0].end))
+                        Text("Current: " + DateTimeUtil.getTimeDiffFormatted(task!.entriesArr[0].start!, task!.entriesArr[0].end))
+                    } else {
+                        Text("Current: 0s")
                     }
                 }.frame(maxWidth: .infinity, alignment: .leading)
                 
@@ -91,13 +93,5 @@ struct TrackTaskView: View {
             update.toggle()
             viewContext.safeSave()
         }
-    }
-    
-    func getFullDuration() -> String {
-        var diff = TimeInterval()
-        for entry in task!.entriesArr {
-            diff += entry.start!.distance(to: entry.end ?? Date())
-        }
-        return diff.diffString
     }
 }

@@ -29,11 +29,15 @@ struct TaskDetailView: View {
                         new.start = Date().withoutSeconds()
                         new.end = Date().withoutSeconds()
                         edit = new
-                        print("AAAAA")
                     } label: {
                         Text("Add entry")
                     }
                 }
+            }
+            
+            HStack {
+                Text("Total: " + task.getFullDuration())
+                Spacer()
             }
             
             Divider()
@@ -122,23 +126,24 @@ struct TaskEntryView: View {
     
     var body: some View {
         if update {}
-        let isOn = Binding {
-            return entry.end != nil
-        } set: { value, _ in
-            withAnimation {
-                if value {
-                    entry.end = Date().withoutSeconds()
-                } else {
-                    entry.end = nil
-                }
-                update.toggle()
-            }
-        }
         Form {
-            DatePicker("Start", selection: Binding($entry.start)!)
-            Toggle("Is finished", isOn: isOn)
+            if entry.start != nil {
+                DatePicker("Start", selection: Binding($entry.start)!)
+            }
             if entry.end != nil {
                 DatePicker("End", selection: Binding($entry.end)!)
+            } else {
+                Button {
+                    withAnimation {
+                        entry.end = Date().withoutSeconds()
+                        entry.task?.isTracking = false
+                        viewContext.safeSave()
+                        update.toggle()
+                    }
+                    print("aa")
+                } label: {
+                    Text("Finish")
+                }
             }
         }
         Spacer()

@@ -24,11 +24,6 @@ struct TaskView: View {
                     }
                 }.contextMenu {
                     Button {
-                        print("rename")
-                    } label: {
-                        Label("Rename", systemImage: "pencil")
-                    }
-                    Button {
                         removeItem(task)
                     } label: {
                         Label("Delete", systemImage: "trash")

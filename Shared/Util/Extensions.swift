@@ -84,3 +84,13 @@ extension Date {
         return self.addingTimeInterval(-1 * TimeInterval(Double(self.timeIntervalSince1970.millisecond) / Double(1000)))
     }
 }
+
+extension Task {
+    func getFullDuration() -> String {
+        var diff = TimeInterval()
+        for entry in entriesArr {
+            diff += entry.start!.distance(to: entry.end ?? Date())
+        }
+        return diff.diffString
+    }
+}
