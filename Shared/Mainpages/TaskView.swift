@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// Main view with a list of all Tasks
 struct TaskView: View {
     @EnvironmentObject var model: Model
     @Environment(\.managedObjectContext) private var viewContext

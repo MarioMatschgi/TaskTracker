@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// View that shows the details of a given Task
 struct TaskDetailView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.colorScheme) var colorScheme

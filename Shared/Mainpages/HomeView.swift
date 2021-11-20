@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// Main view for tracking the time for Tasks
 struct HomeView: View {
     @EnvironmentObject var model: Model
     @Environment(\.managedObjectContext) private var viewContext
