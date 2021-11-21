@@ -7,35 +7,40 @@
 
 import SwiftUI
 
-/// View that shows the current time for the given task with options to start/stop tracking
-struct TrackTaskView: View {
+/// View that shows the current time for the given project with options to start/stop tracking a task
+struct TrackProjectView: View {
+    @EnvironmentObject var model: Model
     @Environment(\.managedObjectContext) private var viewContext
     
-    @Binding var task: Task?
+    @Binding var project: Project?
     @State var update = false
     
     @State var timer: Timer? = nil
+    @State var desc = ""
     
     var body: some View {
         if update { }
-        if task == nil {
-            Text("Select a Task to track")
+        if project == nil {
+            Text("Select a Project to track")
         } else {
             HStack {
                 VStack(alignment: .leading) {
-                    Text(task?.name ?? "")
-                    Text("Total: " + (task?.getFullDuration() ?? "0s"))
-                    if task!.entriesArr.count > 0 {
-                        Text("Current: " + DateTimeUtil.getTimeDiffFormatted(task!.entriesArr[0].start!, task!.entriesArr[0].end))
+                    Text(project?.name ?? "")
+                    Text("Total: " + (project?.getFullDuration() ?? "0s"))
+                    if project!.tasksArr.count > 0 {
+                        Text("Current: " + DateTimeUtil.getTimeDiffFormatted(project!.tasksArr[0].start!, project!.tasksArr[0].end))
                     } else {
                         Text("Current: 0s")
                     }
+                    Form {
+                        TextField("Task", text: $desc)
+                    }.padding(.trailing, 15)
                 }.frame(maxWidth: .infinity, alignment: .leading)
                 
                 Button {
                     toggleTracking()
                 } label: {
-                    Image(systemName: task!.isTracking ? "stop.circle" : "play.fill")
+                    Image(systemName: project!.isTracking ? "stop.circle" : "play.fill")
                         .resizable()
                 }
                 .keyboardShortcut(.space, modifiers: [])
@@ -44,16 +49,23 @@ struct TrackTaskView: View {
                 .frame(maxHeight: .infinity)
                 
                 VStack(alignment: .trailing) {
-                    ForEach(task!.entriesArr.prefix(3), id: \.self) { entry in
+                    ForEach(project!.tasksArr.prefix(4), id: \.self) { entry in
                         Text(entry.toString())
                     }
                 }.frame(maxWidth: .infinity, alignment: .trailing)
             }.padding()
             .onAppear {
-                if task!.isTracking {
+                if project!.isTracking {
                     startTimer()
                 }
+                desc = userDefaults.string(forKey: KEYS.HOME_PROJECT_DESC + project!.id!.uuidString) ?? ""
             }
+            .onChange(of: project, perform: { newValue in
+                desc = userDefaults.string(forKey: KEYS.HOME_PROJECT_DESC + newValue!.id!.uuidString) ?? ""
+            })
+            .onChange(of: desc, perform: { newValue in
+                userDefaults.setValue(newValue, forKey: KEYS.HOME_PROJECT_DESC + project!.id!.uuidString)
+            })
             .onDisappear {
                 stopTimer()
             }
@@ -76,21 +88,20 @@ struct TrackTaskView: View {
     
     func toggleTracking() {
         withAnimation {
-            if task!.isTracking {
-                if task!.entriesArr.count > 0 {
-                    task?.entriesArr[0].end = Date().withoutSeconds()
+            if project!.isTracking {
+                if project!.tasksArr.count > 0 {
+                    project?.tasksArr[0].end = Date().withoutSeconds()
                 }
                 stopTimer()
             } else {
-                let new = TaskEntry(context: viewContext)
+                let new = Task(context: viewContext)
                 new.start = Date().withoutSeconds()
-                new.task = task!
+                new.project = project!
                 startTimer()
             }
             
-            task!.isTracking = !task!.isTracking
-            
             update.toggle()
+            model.objectWillChange.send()
             viewContext.safeSave()
         }
     }

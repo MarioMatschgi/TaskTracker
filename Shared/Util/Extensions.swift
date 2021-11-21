@@ -22,6 +22,34 @@ extension NSManagedObjectContext {
             fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
         }
     }
+    
+    func deleteAllData() {
+        // Get a reference to a NSPersistentStoreCoordinator
+        let storeContainer = persistentStoreCoordinator!
+
+        // Delete each existing persistent store
+        for store in storeContainer.persistentStores {
+            try! storeContainer.destroyPersistentStore(
+                at: store.url!,
+                ofType: store.type,
+                options: nil
+            )
+        }
+    }
+    
+    func deleteEntityData(_ entity: String) {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
+        fetchRequest.returnsObjectsAsFaults = false
+        do {
+            let results = try fetch(fetchRequest)
+            for object in results {
+                guard let objectData = object as? NSManagedObject else {continue}
+                delete(objectData)
+            }
+        } catch let error {
+            print("Detele all data in \(entity) error :", error)
+        }
+    }
 }
 
 extension Color {
@@ -85,12 +113,19 @@ extension Date {
     }
 }
 
-extension Task {
+extension Project {
     func getFullDuration() -> String {
         var diff = TimeInterval()
-        for entry in entriesArr {
+        for entry in tasksArr {
             diff += entry.start!.distance(to: entry.end ?? Date())
         }
         return diff.diffString
+    }
+    
+    var isTracking: Bool {
+        if tasksArr.count == 0 {
+            return false
+        }
+        return tasksArr[0].end == nil
     }
 }

@@ -22,10 +22,10 @@ struct ContentView: View {
                 } label: {
                     Label("Home", systemImage: "house.fill")
                 }
-                NavigationLink(tag: .track, selection: $page) {
-                    TaskView()
+                NavigationLink(tag: .projects, selection: $page) {
+                    ProjectsView()
                 } label: {
-                    Label("Tasks", systemImage: "square.and.pencil")
+                    Label("Projects", systemImage: "square.and.pencil")
                 }
                 NavigationLink(tag: .history, selection: $page) {
                     AccountingView()

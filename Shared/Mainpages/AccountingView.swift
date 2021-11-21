@@ -45,9 +45,3 @@ struct AccountingView: View {
         return (end...start).reversed()
     }
 }
-
-struct HistoryView_Previews: PreviewProvider {
-    static var previews: some View {
-        AccountingView()
-    }
-}

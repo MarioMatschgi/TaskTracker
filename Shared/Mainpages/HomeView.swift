@@ -13,38 +13,38 @@ struct HomeView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.colorScheme) var colorScheme
     
-    @State var selected: Task? = nil
+    @State var selected: Project? = nil
     
     var body: some View {
         VStack(spacing: 0) {
             VStack {
-                TrackTaskView(task: $selected)
+                TrackProjectView(project: $selected)
             }.frame(height: 100)
-            List(model.tasks, id: \.id, selection: $selected) { task in
+            List(model.projects, id: \.id, selection: $selected) { project in
                 HStack {
-                    Image(systemName: task.isTracking ? "stop.circle" : "play.fill")
-                    Text(task.name!)
+                    Image(systemName: project.isTracking ? "stop.circle" : "play.fill")
+                    Text(project.name!)
                     Spacer()
-                }.tag(task)
+                }.tag(project)
             }
         }.onAppear {
-            if let uid = userDefaults.string(forKey: KEYS.HOME_TASKS_SELECTED) {
-                selected = model.tasks.first(where: { task in
-                    task.id == UUID(uuidString: uid)
+            if let uid = userDefaults.string(forKey: KEYS.HOME_PROJECT_SELECTED) {
+                selected = model.projects.first(where: { project in
+                    project.id == UUID(uuidString: uid)
                 })
             }
         }
         .onDisappear {
-            userDefaults.set(selected?.id?.uuidString, forKey: KEYS.HOME_TASKS_SELECTED)
+            userDefaults.set(selected?.id?.uuidString, forKey: KEYS.HOME_PROJECT_SELECTED)
         }
         .navigationTitle(selected?.name ?? "Home")
         .navigationSubtitle(selected != nil ? "Home" : "")
         .toolbar {
             ToolbarItem {
                 Button {
-                    print("View - deeplink to task")
+                    print("View - deeplink to project")
                 } label: {
-                    Label("View task", systemImage: "info.circle")
+                    Label("View project", systemImage: "info.circle")
                 }
             }
         }

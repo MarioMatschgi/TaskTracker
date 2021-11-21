@@ -37,9 +37,9 @@ struct PersistenceController {
     }
 }
 
-extension Task {
-    static var taskFetchRequest: NSFetchRequest<Task> {
-        let request = Task.fetchRequest()
+extension Project {
+    static var taskFetchRequest: NSFetchRequest<Project> {
+        let request = Project.fetchRequest()
         request.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
         
         return request
@@ -48,12 +48,12 @@ extension Task {
 
 class Model: NSObject, ObservableObject {
     // Thanks to https://www.donnywals.com/fetching-objects-from-core-data-in-a-swiftui-project/
-    @Published var tasks: [Task] = []
+    @Published var projects: [Project] = []
     
-    private let controller: NSFetchedResultsController<Task>
+    private let controller: NSFetchedResultsController<Project>
 
       init(managedObjectContext: NSManagedObjectContext) {
-          controller = NSFetchedResultsController(fetchRequest: Task.taskFetchRequest,
+          controller = NSFetchedResultsController(fetchRequest: Project.taskFetchRequest,
         managedObjectContext: managedObjectContext,
         sectionNameKeyPath: nil, cacheName: nil)
 
@@ -63,7 +63,7 @@ class Model: NSObject, ObservableObject {
 
         do {
           try controller.performFetch()
-            tasks = controller.fetchedObjects ?? []
+            projects = controller.fetchedObjects ?? []
         } catch {
           print("failed to fetch items!")
         }
@@ -72,9 +72,9 @@ class Model: NSObject, ObservableObject {
 
 extension Model: NSFetchedResultsControllerDelegate {
   func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-    guard let tasks = controller.fetchedObjects as? [Task]
+    guard let projects = controller.fetchedObjects as? [Project]
       else { return }
 
-      self.tasks = tasks
+      self.projects = projects
   }
 }

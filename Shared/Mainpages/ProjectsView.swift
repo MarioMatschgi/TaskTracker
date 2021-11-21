@@ -7,56 +7,56 @@
 
 import SwiftUI
 
-/// Main view with a list of all Tasks
-struct TaskView: View {
+/// Main view with a list of all Projects
+struct ProjectsView: View {
     @EnvironmentObject var model: Model
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.colorScheme) var colorScheme
     
-    @State var selected: Task? = nil
+    @State var selected: Project? = nil
     
     var body: some View {
         NavigationView {
-            List(model.tasks, id: \.id) { task in
-                NavigationLink(task.name ?? "", tag: task, selection: $selected) {
+            List(model.projects, id: \.id) { project in
+                NavigationLink(project.name ?? "", tag: project, selection: $selected) {
                     if selected != nil {
-                        TaskDetailView(task: selected!)
+                        ProjectDetailView(project: selected!)
                     }
                 }.contextMenu {
                     Button {
-                        removeItem(task)
+                        removeItem(project)
                     } label: {
                         Label("Delete", systemImage: "trash")
                     }
                 }
             }
             
-            Text("Choose a task")
+            Text("Choose a project")
         }.onAppear {
-            if let uid = userDefaults.string(forKey: KEYS.TASKS_SELECTED) {
-                selected = model.tasks.first(where: { task in
+            if let uid = userDefaults.string(forKey: KEYS.PROJECTS_SELECTED) {
+                selected = model.projects.first(where: { task in
                     task.id == UUID(uuidString: uid)
                 })
             }
         }
         .onDisappear {
-            userDefaults.set(selected?.id?.uuidString, forKey: KEYS.TASKS_SELECTED)
+            userDefaults.set(selected?.id?.uuidString, forKey: KEYS.PROJECTS_SELECTED)
         }
-        .navigationTitle(selected?.name ?? "Tasks")
-        .navigationSubtitle(selected != nil ? "Tasks" : "")
+        .navigationTitle(selected?.name ?? "Projects")
+        .navigationSubtitle(selected != nil ? "Projects" : "")
         .toolbar {
             ToolbarItem {
                 Button {
                     removeItem()
                 } label: {
-                    Label("Remove task", systemImage: "trash")
+                    Label("Delete project", systemImage: "trash")
                 }.disabled(selected == nil)
             }
             ToolbarItem {
                 Button {
                     addItem()
                 } label: {
-                    Label("Add task", systemImage: "plus")
+                    Label("Add project", systemImage: "plus")
                 }
             }
         }
@@ -64,10 +64,10 @@ struct TaskView: View {
     
     func addItem() {
         withAnimation {
-            let newItem = Task(context: viewContext)
+            let newItem = Project(context: viewContext)
             newItem.id = UUID()
-            newItem.name = "New Task"
-            newItem.entries = []
+            newItem.name = "New Project"
+            newItem.tasks = []
             
             selected = newItem
 
@@ -75,7 +75,7 @@ struct TaskView: View {
         }
     }
     
-    func removeItem(_ item: Task? = nil) {
+    func removeItem(_ item: Project? = nil) {
         withAnimation {
             if let t = item ?? selected {
                 viewContext.delete(t)

@@ -10,25 +10,26 @@ import SwiftUI
 
 class KEYS {
     static let MAIN_PAGE_SELECTED = "main.page.selected"
-    static let HOME_TASKS_SELECTED = "home.tasks.selected"
-    static let TASKS_SELECTED = "tasks.selected"
+    static let HOME_PROJECT_SELECTED = "home.project.selected"
+    static let HOME_PROJECT_DESC = "home.project.desc"
+    static let PROJECTS_SELECTED = "projects.selected"
 }
 
 enum PageType: String {
     case home
-    case track
+    case projects
     case history
 }
 
-extension Task {
-    var entriesArr: [TaskEntry] {
-        return (self.entries! as! Set<TaskEntry>).sorted(by: { e1, e2 in
+extension Project {
+    var tasksArr: [Task] {
+        return (self.tasks! as! Set<Task>).sorted(by: { e1, e2 in
             e1.start! > e2.start!
         })
     }
 }
 
-extension TaskEntry {
+extension Task {
     func toString() -> String {
         return "\(toStringStart())-\(toStringEnd())"
     }

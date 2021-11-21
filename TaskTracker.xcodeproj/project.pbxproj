@@ -15,16 +15,18 @@
 		AC3D12A62743C55600B8134D /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3D12902743C55500B8134D /* Persistence.swift */; };
 		AC3D12A72743C55600B8134D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC3D12912743C55600B8134D /* Assets.xcassets */; };
 		AC3D12A82743C55600B8134D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC3D12912743C55600B8134D /* Assets.xcassets */; };
-		ACA27666274446DC002C54B8 /* TaskDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA27665274446DC002C54B8 /* TaskDetailView.swift */; };
-		ACA27667274446DC002C54B8 /* TaskDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA27665274446DC002C54B8 /* TaskDetailView.swift */; };
+		AC8DD716274A696F00E3E117 /* TaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8DD715274A696F00E3E117 /* TaskView.swift */; };
+		AC8DD717274A696F00E3E117 /* TaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8DD715274A696F00E3E117 /* TaskView.swift */; };
+		ACA27666274446DC002C54B8 /* ProjectDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA27665274446DC002C54B8 /* ProjectDetailView.swift */; };
+		ACA27667274446DC002C54B8 /* ProjectDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA27665274446DC002C54B8 /* ProjectDetailView.swift */; };
 		ACA2766A27444C90002C54B8 /* DateTimeUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA2766927444C90002C54B8 /* DateTimeUtil.swift */; };
 		ACA2766B27444C90002C54B8 /* DateTimeUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA2766927444C90002C54B8 /* DateTimeUtil.swift */; };
 		ACF3D2212743CD1D0003C4C5 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF3D2202743CD1D0003C4C5 /* Data.swift */; };
 		ACF3D2222743CD1D0003C4C5 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF3D2202743CD1D0003C4C5 /* Data.swift */; };
 		ACF3D2242743CDB20003C4C5 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF3D2232743CDB20003C4C5 /* HomeView.swift */; };
 		ACF3D2252743CDB20003C4C5 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF3D2232743CDB20003C4C5 /* HomeView.swift */; };
-		ACF3D2272743CDD20003C4C5 /* TaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF3D2262743CDD20003C4C5 /* TaskView.swift */; };
-		ACF3D2282743CDD20003C4C5 /* TaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF3D2262743CDD20003C4C5 /* TaskView.swift */; };
+		ACF3D2272743CDD20003C4C5 /* ProjectsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF3D2262743CDD20003C4C5 /* ProjectsView.swift */; };
+		ACF3D2282743CDD20003C4C5 /* ProjectsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF3D2262743CDD20003C4C5 /* ProjectsView.swift */; };
 		ACF3D22A2743CDEC0003C4C5 /* AccountingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF3D2292743CDEC0003C4C5 /* AccountingView.swift */; };
 		ACF3D22B2743CDEC0003C4C5 /* AccountingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF3D2292743CDEC0003C4C5 /* AccountingView.swift */; };
 		ACF3D22F2743D3D00003C4C5 /* TaskTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = ACF3D22C2743D3CF0003C4C5 /* TaskTracker.xcdatamodeld */; };
@@ -43,11 +45,12 @@
 		AC3D12962743C55600B8134D /* TaskTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaskTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC3D129C2743C55600B8134D /* TaskTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaskTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC3D129E2743C55600B8134D /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
-		ACA27665274446DC002C54B8 /* TaskDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailView.swift; sourceTree = "<group>"; };
+		AC8DD715274A696F00E3E117 /* TaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskView.swift; sourceTree = "<group>"; };
+		ACA27665274446DC002C54B8 /* ProjectDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDetailView.swift; sourceTree = "<group>"; };
 		ACA2766927444C90002C54B8 /* DateTimeUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTimeUtil.swift; sourceTree = "<group>"; };
 		ACF3D2202743CD1D0003C4C5 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		ACF3D2232743CDB20003C4C5 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		ACF3D2262743CDD20003C4C5 /* TaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskView.swift; sourceTree = "<group>"; };
+		ACF3D2262743CDD20003C4C5 /* ProjectsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsView.swift; sourceTree = "<group>"; };
 		ACF3D2292743CDEC0003C4C5 /* AccountingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountingView.swift; sourceTree = "<group>"; };
 		ACF3D22D2743D3CF0003C4C5 /* TaskTracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TaskTracker.xcdatamodel; sourceTree = "<group>"; };
 		ACF3D22E2743D3CF0003C4C5 /* Shared.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Shared.xcdatamodel; sourceTree = "<group>"; };
@@ -85,10 +88,10 @@
 		AC3D128B2743C55500B8134D /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				ACF3D2342743EFEA0003C4C5 /* Mainpages */,
-				ACF3D2352743EFFD0003C4C5 /* Subviews */,
 				AC3D128E2743C55500B8134D /* TaskTrackerApp.swift */,
 				AC3D128F2743C55500B8134D /* ContentView.swift */,
+				ACF3D2342743EFEA0003C4C5 /* Mainpages */,
+				ACF3D2352743EFFD0003C4C5 /* Subviews */,
 				ACA2766827444C75002C54B8 /* Util */,
 				ACF3D22C2743D3CF0003C4C5 /* TaskTracker.xcdatamodeld */,
 				ACF3D2202743CD1D0003C4C5 /* Data.swift */,
@@ -128,7 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				ACF3D2232743CDB20003C4C5 /* HomeView.swift */,
-				ACF3D2262743CDD20003C4C5 /* TaskView.swift */,
+				ACF3D2262743CDD20003C4C5 /* ProjectsView.swift */,
 				ACF3D2292743CDEC0003C4C5 /* AccountingView.swift */,
 			);
 			path = Mainpages;
@@ -138,7 +141,8 @@
 			isa = PBXGroup;
 			children = (
 				ACF3D2362743F0170003C4C5 /* TrackTaskView.swift */,
-				ACA27665274446DC002C54B8 /* TaskDetailView.swift */,
+				ACA27665274446DC002C54B8 /* ProjectDetailView.swift */,
+				AC8DD715274A696F00E3E117 /* TaskView.swift */,
 			);
 			path = Subviews;
 			sourceTree = "<group>";
@@ -245,9 +249,10 @@
 				ACF3D22A2743CDEC0003C4C5 /* AccountingView.swift in Sources */,
 				ACF3D2372743F0170003C4C5 /* TrackTaskView.swift in Sources */,
 				ACF3D2212743CD1D0003C4C5 /* Data.swift in Sources */,
-				ACA27666274446DC002C54B8 /* TaskDetailView.swift in Sources */,
-				ACF3D2272743CDD20003C4C5 /* TaskView.swift in Sources */,
+				ACA27666274446DC002C54B8 /* ProjectDetailView.swift in Sources */,
+				ACF3D2272743CDD20003C4C5 /* ProjectsView.swift in Sources */,
 				AC3D12A52743C55600B8134D /* Persistence.swift in Sources */,
+				AC8DD716274A696F00E3E117 /* TaskView.swift in Sources */,
 				ACF3D2242743CDB20003C4C5 /* HomeView.swift in Sources */,
 				AC3D12A12743C55600B8134D /* TaskTrackerApp.swift in Sources */,
 				AC3D12A32743C55600B8134D /* ContentView.swift in Sources */,
@@ -264,9 +269,10 @@
 				ACF3D22B2743CDEC0003C4C5 /* AccountingView.swift in Sources */,
 				ACF3D2382743F0170003C4C5 /* TrackTaskView.swift in Sources */,
 				ACF3D2222743CD1D0003C4C5 /* Data.swift in Sources */,
-				ACA27667274446DC002C54B8 /* TaskDetailView.swift in Sources */,
-				ACF3D2282743CDD20003C4C5 /* TaskView.swift in Sources */,
+				ACA27667274446DC002C54B8 /* ProjectDetailView.swift in Sources */,
+				ACF3D2282743CDD20003C4C5 /* ProjectsView.swift in Sources */,
 				AC3D12A62743C55600B8134D /* Persistence.swift in Sources */,
+				AC8DD717274A696F00E3E117 /* TaskView.swift in Sources */,
 				ACF3D2252743CDB20003C4C5 /* HomeView.swift in Sources */,
 				AC3D12A22743C55600B8134D /* TaskTrackerApp.swift in Sources */,
 				AC3D12A42743C55600B8134D /* ContentView.swift in Sources */,
