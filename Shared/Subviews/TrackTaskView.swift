@@ -96,6 +96,7 @@ struct TrackProjectView: View {
             } else {
                 let new = Task(context: viewContext)
                 new.start = Date().withoutSeconds()
+                new.desc = desc
                 new.project = project!
                 startTimer()
             }

@@ -50,6 +50,8 @@ struct ProjectDetailView: View {
                             .frame(width: 55, alignment: .leading)
                         Text("End")
                             .frame(width: 55, alignment: .leading)
+                        Text("Description")
+                            .frame(alignment: .leading)
                         Spacer()
                         Text("Duration")
                     }
@@ -59,6 +61,7 @@ struct ProjectDetailView: View {
                                 .frame(width: 55, alignment: .leading)
                             Text(task.toStringEnd())
                                 .frame(width: 55, alignment: .leading)
+                            Text(task.desc ?? "")
                             Spacer()
                             Text(DateTimeUtil.getTimeDiffFormatted(task.start!, task.end, showZeroS: true))
                             Button {

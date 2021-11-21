@@ -38,6 +38,7 @@ struct TaskView: View {
                     Text("Finish")
                 }
             }
+            TextField("Description", text: Binding($task.desc, ""))
         }
         Spacer()
         HStack {
