@@ -43,10 +43,5 @@ struct ContentView: View {
         .onChange(of: page, perform: { newValue in
             userDefaults.set(newValue?.rawValue, forKey: KEYS.MAIN_PAGE_SELECTED)
         })
-        .toolbar {
-            ToolbarItem {
-                Button { } label: { }.hidden()
-            }
-        }
     }
 }

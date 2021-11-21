@@ -12,12 +12,37 @@ struct AccountingView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.colorScheme) var colorScheme
     
+    @State var month = Calendar.current.component(.month, from: Date())
+    @State var year = Calendar.current.component(.year, from: Date())
+    
     var body: some View {
-//        Text("List of tasks, how long they took and if you click on the element -> navigationlink/sheet to detail page where you can see timestamps")
         VStack {
             
         }
         .navigationTitle("Accounting")
+        .toolbar {
+            ToolbarItem {
+                Picker(selection: $month) {
+                    ForEach(1..<13) { i in
+                        Text(DateTimeUtil.getMonthText(i)).tag(i)
+                    }
+                } label: { }
+            }
+            ToolbarItem {
+                Picker(selection: $year) {
+                    ForEach(getYearRange(), id: \.self) { i in
+                        Text(String(i)).tag(i)
+                    }
+                } label: { }
+            }
+        }
+    }
+    
+    func getYearRange() -> [Int] {
+        let start = Calendar.current.component(.year, from: Date())
+        let end = start - 10
+        
+        return (end...start).reversed()
     }
 }
 
